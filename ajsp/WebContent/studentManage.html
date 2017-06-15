@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="utf-8" />
+	<title>学生管理</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link href="./css/bootstrap.min.css" rel="stylesheet" />
+	<link href="./css/bootstrap-responsive.min.css" rel="stylesheet" />
+	<link href="./css/font-awesome.css" rel="stylesheet" />
+	<link href="./css/adminia.css" rel="stylesheet" />
+	<link href="./css/adminia-responsive.css" rel="stylesheet" />
+	<link href="./css/pages/dashboard.css" rel="stylesheet" />
+
+
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+<body>
+<h1 class="page-title">
+	<i class="icon-home"></i>
+	学生管理
+</h1>
+				<div class="widget widget-table">
+
+					<div class="widget-header">
+						<i class="icon-search"></i>
+						<h3>查询条件</h3>
+					</div> <!-- /widget-header -->
+					<br/>
+					<form id="edit-profile" class="form-horizontal" action="" /> <!--隐藏表单提交当前用户的学院，限制查询的范围，若当前登陆人员为管理员，其部门属于教务处，检索范围为全校，若是计算机学院老师登陆，前台会直接获取当前用户的学院，表单提交到后台应当获取此参数，检索计算机学院的人-->
+					<input type="hidden" name="department" id="department" readonly="">
+					<fieldset>
+
+						<div class="control-group">
+
+							<label class="control-label">条件选项</label>
+
+							<div class="controls">
+								<select id = "select" class = "form-control">
+									<option value="id">账户ID</option>
+									<option value="name">姓名</option>
+									<option value="level">补助等级</option>
+								</select>
+								&nbsp &nbsp 条件值 &nbsp &nbsp &nbsp
+								<input type="text" class="input-large" id="value"/>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+								<button type="submit" class="btn btn-primary">查询</button>
+							</div>
+						</div> <!-- /control-group -->
+					</fieldset>
+					</form>
+				</div> <!-- /widget -->
+
+
+				<div class="widget widget-table">
+
+					<div class="widget-header">
+						<i class="icon-th-list"></i>
+						<h3>查询结果</h3>
+					</div> <!-- /widget-header -->
+
+					<div class="widget-content" id ="app">
+
+						<table class="table table-striped ">
+							<thead>
+							<tr>
+								<th>学号</th>
+								<th>姓名</th>
+								<th>银行卡账户</th>
+								<th>学院</th>
+								<th>补助等级</th>
+								<th>补助类型</th>
+								<th style="width:140px">操作选项</th>
+							</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>{row.schoolNum}</td>
+									<td>{row.name}</td>
+									<td>{row.bankCard}</td>
+									<td>{row.department}</td>
+									<td>{row.teacher}</td>
+									<td>{row.level}</td>
+									<td>
+										<a href="javascript:void(0);" class = "btn btn-warning" onclick="edit(this);">编辑</a>&nbsp;
+										<a href="#" class = "btn btn-danger" @click="Delete()">删除</a>
+									</td>
+								</tr>
+								<tr>
+									<td>{row.schoolNum}</td>
+									<td>{row.name}</td>
+									<td>{row.bankCard}</td>
+									<td>管理学院</td>
+									<td>三等</td>
+									<td>学费补助</td>
+									<td>
+										<a href="javascript:void(0);" class = "btn btn-warning" onclick="edit(this);">编辑</a>&nbsp;
+										<a href="#" class = "btn btn-danger" @click="Delete()">删除</a>
+									</td>
+								</tr>
+							<form id="edit-delete"  action="myServlet" method = "post">
+							<tr class="editshow">
+								<td><input type="text" style="width:60%" name="id" v-model="rowtemplate.schoolNum"/></td>
+								<td><input type="text" style="width:80%" class = "input-small" name="name" v-model="rowtemplate.name"/></td>
+								<td><input type="text" style="width:90%" class = "input-small" name="bankCard" v-model="rowtemplate.bankCard" /></td>
+								<td><select  class="input-small" name="department"v-model="rowtemplate.department">
+									　　　　　　　　　　　　　　　　 <option>光电学院</option>
+									　　　　　　　　　　　　　　　　<option>管理学院</option>　　　　　　　　　　　　　　　
+									　　　　　　　　　　　　　　　　</select></td>
+
+								<td><select  class="input-small" name="level"v-model="rowtemplate.level">
+									　　　　　　　　　　　　　　　　 <option>一等</option>
+									　　　　　　　 　　　　　　　　　<option>二等</option>　
+									                            <option>三等</option>　　　　　　　　　　　　　　　
+									　　　　　　　　　　　　　　　　</select></td>
+
+								<td><select  class="input-small" name="categroy"v-model="rowtemplate.isPoverty">
+									　　　　　　　　　　　　　　　　 <option>冬令补助</option>
+									　　　　　　　　　　　　　　　　<option>学费补助</option>　　　　　　　　　　　　　　　
+									　　　　　　　　　　　　　　　　</select></td>
+								<td><button type="submit" class="btn btn-primary" name="save" onclick="save()">保存</button>&nbsp;
+									</td>
+							</tr>
+							</form>
+							</tbody>
+						</table>
+						<nav style="float:right;">
+							<ul class="pagination pagination-lg">
+									<li name="prepage"><a href="#">上一页</a></li>
+									<li name="curpage"><a>当前第{page}页</a></li>
+									<li name="nextpage"><a href="#">下一页</a></li>
+								<li name="curpage"><a>共{sumpage}页</a></li>
+							</ul>
+						</nav>
+
+					</div>
+
+				</div>
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="./js/jquery-1.7.2.min.js"></script>
+<script src="./js/excanvas.min.js"></script>
+<script src="./js/jquery.flot.js"></script>
+<script src="./js/jquery.flot.pie.js"></script>
+<script src="./js/jquery.flot.orderBars.js"></script>
+<script src="./js/jquery.flot.resize.js"></script>
+<script src="./js/bootstrap.js"></script>
+<script src="./js/studentManage.js"></script>
+<script src="./js/height.js"></script>
+<script src="./js/edit.js"></script>
+</body>
+</html>

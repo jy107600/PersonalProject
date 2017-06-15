@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>账号管理</title>
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<link href="./css/bootstrap.min.css" rel="stylesheet" />
+<link href="./css/bootstrap-responsive.min.css" rel="stylesheet" />
+<link href="./css/font-awesome.css" rel="stylesheet" />
+<link href="./css/adminia.css" rel="stylesheet" />
+<link href="./css/adminia-responsive.css" rel="stylesheet" />
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+	<div>
+		<h1 class="page-title">
+			<i class="icon-th-large"></i> 用户账户
+		</h1>
+
+
+		<div class="row">
+
+			<div class="span9" style="width: 870px;">
+
+				<div class="widget">
+
+					<div class="widget-header">
+						<h3>基础信息</h3>
+					</div>
+					<!-- /widget-header -->
+
+					<div class="widget-content">
+
+
+
+						<div class="tabbable">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#1" data-toggle="tab">账号设置</a>
+								</li>
+							</ul>
+
+							<br />
+
+							<div class="tab-content">
+								<div class="tab-pane active" id="1">
+
+									<form id="edit-profile" class="form-horizontal"
+										action="javascript;;" />
+									<fieldset>
+
+										<div class="control-group">
+											<label class="control-label" for="username">账户ID</label>
+											<div class="controls">
+												<input type="text" class="input-medium" id="username"
+													readonly="" /> <span class="help-inline"
+													style="color: red"> * 账户ID不可修改</span>
+											</div>
+											<!-- /controls -->
+										</div>
+										<!-- /control-group -->
+
+
+										<div class="control-group">
+											<label class="control-label" for="firstname">姓</label>
+											<div class="controls">
+												<input type="text" class="input-medium" id="firstname"
+													value="" />
+											</div>
+											<!-- /controls -->
+										</div>
+										<!-- /control-group -->
+
+
+										<div class="control-group">
+											<label class="control-label" for="lastname">名</label>
+											<div class="controls">
+												<input type="text" class="input-medium" id="lastname"
+													value="" />
+											</div>
+											<!-- /controls -->
+										</div>
+										<!-- /control-group -->
+
+
+										<div class="control-group">
+											<label class="control-label" for="email">邮箱地址</label>
+											<div class="controls">
+												<input type="text" class="input-medium" id="email"
+													value="jy107600@gmail.com" />
+											</div>
+											<!-- /controls -->
+										</div>
+										<!-- /control-group -->
+
+
+
+										<div class="control-group">
+											<label class="control-label" for="password1">密码</label>
+											<div class="controls">
+												<input type="password" class="input-medium" id="password1"
+													value="javascript;;" />
+											</div>
+											<!-- /controls -->
+										</div>
+										<!-- /control-group -->
+
+
+										<div class="control-group">
+											<label class="control-label" for="password2">确认密码</label>
+											<div class="controls">
+												<input type="password" class="input-medium" id="password2"
+													value="javascript;;" />
+											</div>
+											<!-- /controls -->
+										</div>
+										<!-- /control-group -->
+
+										<div class="form-actions">
+											<button type="submit" class="btn btn-warning">确定修改</button>
+										</div>
+										<!-- /form-actions -->
+									</fieldset>
+									</form>
+								</div>
+								</fieldset>
+								</form>
+							</div>
+
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- Le javascript
+================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="./js/jquery-1.7.2.min.js"></script>
+	<script src="./js/bootstrap.js"></script>
+	<script src="./js/height.js"></script>
+	<script src="./js/getId.js"></script>
+</body>
+</html>
